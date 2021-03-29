@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="1080.0" prefWidth="1920.0" styleClass="background" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MainMenu">
+   <stylesheets>
+      <URL value="@../assets/css/MainMenu.css" />
+      <URL value="@../assets/css/Main.css" />
+   </stylesheets>
+   <top>
+      <BorderPane prefHeight="50.0" prefWidth="1920.0" BorderPane.alignment="CENTER">
+         <right>
+            <MenuButton fx:id="mainMenu" contentDisplay="BOTTOM" mnemonicParsing="false" text="Menu" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
+              <items>
+                <MenuItem fx:id="logout" mnemonicParsing="false" onAction="#logoutButtonOnAction" text="Logout" />
+              </items>
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btnMargin" />
+               </styleClass>
+            </MenuButton>
+         </right>
+      </BorderPane>
+   </top>
+</BorderPane>

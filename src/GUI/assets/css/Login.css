@@ -1,0 +1,31 @@
+.avatar {
+    -fx-image: url('../images/avatar.png');
+}
+
+.text {
+    -fx-font-weight: bold;
+}
+
+.textField {
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.alert {
+    -fx-background-color: #f8d7da;
+    -fx-background-radius: 0.6em;
+    -fx-border-radius: 0.6em;
+    -fx-border-color: white;
+}
+
+.alertText {
+    -fx-text-fill: #721c24;
+}
+
+.btn {
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-border-radius: 0.4em;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}

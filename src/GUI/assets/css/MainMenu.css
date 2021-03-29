@@ -1,0 +1,15 @@
+.btn {
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-border-radius: 0.4em;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.label {
+    -fx-text-fill: white;
+}
+
+.menu {
+    -fx-background-color: red;
+}

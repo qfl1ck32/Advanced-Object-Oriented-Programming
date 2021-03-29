@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane fx:id="container" prefHeight="1080.0" prefWidth="1920.0" styleClass="background" stylesheets="@../assets/css/Main.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Start">
+   <center>
+      <JFXButton fx:id="getStartedButton" alignment="CENTER" onAction="#openLogin" styleClass="getStartedBtn" stylesheets="@../assets/css/Start.css" text="GET STARTED" textFill="WHITE" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+   </center>
+</BorderPane>

@@ -1,0 +1,7 @@
+.getStartedBtn {
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-border-radius: 0.4em;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
