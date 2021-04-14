@@ -1,0 +1,17 @@
+{
+  "0X1": {
+    "name": "Cheese",
+    "products": {
+      "0X1": "Cheddar",
+      "0X2": "Mozzarella"
+    }
+  },
+
+  "0X2": {
+    "name": "Meat",
+    "products": {
+      "0X3": "Fish",
+      "0X4": "Pork"
+    }
+  }
+}
