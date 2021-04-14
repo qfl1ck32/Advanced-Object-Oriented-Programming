@@ -1,0 +1,28 @@
+{
+    "Back": {
+        "requiresAuth": false,
+        "hideOnAuth": true
+    },
+
+    "Products": {
+        "requiresAuth": false,
+        "hideOnAuth": false
+    },
+
+    "My account": {
+        "requiresAuth": true,
+        "hideOnAuth": false,
+        
+        "submenu": {
+            "Deliveries": {
+                "requiresAuth": true,
+                "hideOnAuth": false
+            }
+        }
+    },
+
+    "Logout": {
+        "requiresAuth": true,
+        "hideOnAuth": false
+    }
+}
