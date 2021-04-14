@@ -1,4 +1,4 @@
-package simpleClasses;
+package Records;
 
 import java.util.ArrayList;
 

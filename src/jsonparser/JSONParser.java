@@ -1,4 +1,4 @@
-package jsonparser;
+package JSONParser;
 
 import java.io.FileWriter;
 import java.nio.charset.StandardCharsets;

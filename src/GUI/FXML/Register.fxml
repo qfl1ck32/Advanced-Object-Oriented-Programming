@@ -7,6 +7,7 @@
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -36,8 +37,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
@@ -52,16 +51,6 @@
                                         <JFXButton fx:id="registerButton" onAction="#registerButtonOnAction" ripplerFill="WHITE" styleClass="btn" text="Register" BorderPane.alignment="CENTER" />
                            </center>
                                 </BorderPane>
-                        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="9">
-                           <center>
-                                  <JFXButton fx:id="backButton" onAction="#backButtonOnAction" prefHeight="22.0" prefWidth="45.0" text="Back" BorderPane.alignment="CENTER">
-                                      <styleClass>
-                                          <String fx:value="btn" />
-                                          <String fx:value="backButton" />
-                                      </styleClass>
-                                  </JFXButton>
-                           </center>
-                        </BorderPane>
                             </children>
                         </GridPane>
                     </center>
@@ -87,4 +76,16 @@
             </children>
         </Group>
     </center>
+   <top>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton fx:id="backButton" layoutX="8.0" layoutY="8.0" onAction="#backButtonOnAction" text="Back">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="backButton" />
+               </styleClass>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+   </top>
 </BorderPane>

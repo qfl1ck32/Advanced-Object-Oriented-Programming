@@ -1,16 +1,16 @@
-package compoundClasses;
+package DatabaseMock;
 
-import interfaces.*;
-import simpleClasses.User;
-import jsonparser.JSONParser;
+import JSONParser.JSONParser;
+import Records.User;
+import interfaces.IterableAndMappable;
 
-public class Users extends Entity <User> implements ArrayAndMap {
+public class Users extends WithArrayAndMap<User> implements IterableAndMappable {
 
     public void append(Object o) {
         User u = (User) o;
 
         super.arr.add(u);
-        super.idMap.put(u.getUsername(), u);
+        super.map.put(u.getUsername(), u);
     }
 
     public void init(String filename) {
@@ -21,10 +21,14 @@ public class Users extends Entity <User> implements ArrayAndMap {
             JSONParser inner = new JSONParser(parser.getJSON(ID));
 
             User user = new User(inner.getString("username"), inner.getString("password"), inner.getString("address"),
-                inner.getStringArray("deliveryIDS"), inner.getStringArray("cart"), inner.getBoolean("isLoggedIn"));
+                    inner.getStringArray("deliveryIDS"), inner.getStringArray("cart"), inner.getBoolean("isLoggedIn"));
 
             this.append(user);
         }
+    }
+
+    public User find(String username) {
+        return super.map.get(username);
     }
 
     public Users(String filename) {

@@ -1,33 +1,33 @@
 package GUI;
 
-import enumerations.SlideType;
-import enumerations.View;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import com.jfoenix.controls.JFXButton;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Start implements Initializable {
     @FXML
-    private JFXButton getStartedButton;
+    private JFXButton login, register, enterAsGuest;
     @FXML
     private BorderPane container;
 
     @FXML
-    private void openLogin(ActionEvent event) throws IOException {
-        if (!ScreenManager.hasScreen(View.LOGIN)) {
-            Parent login = FXMLLoader.load(getClass().getResource("/GUI/FXML/Login.fxml"));
-            ScreenManager.addScreen(View.LOGIN, login);
-        }
+    private void openLogin(ActionEvent event) {
+        ScreenManager.goToLogin();
+    }
 
-        ScreenManager.setScreen(View.LOGIN, SlideType.HORIZONTAL);
+    @FXML
+    private void openRegister(ActionEvent event) {
+        ScreenManager.goToRegister();
+    }
+
+    @FXML
+    private void openMainMenuAsGuest(ActionEvent event) {
+        ScreenManager.goToMainMenu();
     }
 
     @Override

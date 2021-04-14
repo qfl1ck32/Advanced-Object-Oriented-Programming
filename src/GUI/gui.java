@@ -1,10 +1,8 @@
 package GUI;
 
-import enumerations.View;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -19,23 +17,15 @@ public class gui extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        Parent  mainStack = FXMLLoader.load(getClass().getResource("FXML/MainStack.fxml")),
-                start = FXMLLoader.load(getClass().getResource("FXML/Start.fxml"));
+        Parent mainStack = FXMLLoader.load(getClass().getResource("FXML/MainStack.fxml"));
 
-        ScreenManager.getInstance().setMainScene(mainStack);
+        ScreenManager.setMainScene(mainStack);
 
-        ScreenManager.addScreen(View.START, start);
-        ScreenManager.setFirstScreen(View.START);
+        ScreenManager.setFirstScreen();
 
         primaryStage.setTitle("myFoodDelivery");
         primaryStage.setScene(ScreenManager.getMainScene());
         primaryStage.initStyle(StageStyle.UTILITY);
         primaryStage.show();
-    }
-
-
-
-    public static void goBack(StackPane parentContainer) {
-        parentContainer.getChildren().remove(1);
     }
 }

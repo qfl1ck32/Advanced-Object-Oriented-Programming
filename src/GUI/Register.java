@@ -10,8 +10,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 
-import java.io.IOException;
-
 public class Register {
     @FXML
     JFXTextField usernameText, passwordText, emailText;
@@ -36,12 +34,11 @@ public class Register {
     }
 
     private void tryRegister() {
-        System.out.println("Inregistrare");
         shakeOrShowMessage();
     }
 
-    public void backButtonOnAction(ActionEvent event) throws IOException {
-        ScreenManager.goBack(SlideType.VERTICAL);
+    public void backButtonOnAction(ActionEvent event) {
+        ScreenManager.goBack(SlideType.HORIZONTAL);
     }
 
     public void registerButtonOnAction(ActionEvent event) {

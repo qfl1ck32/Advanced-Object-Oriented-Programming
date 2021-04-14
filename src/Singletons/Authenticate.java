@@ -1,13 +1,14 @@
-package compoundClasses;
+package Singletons;
 
 import java.util.Scanner;
 
+import DatabaseMock.Users;
 import enumerations.LoginResponse;
-import simpleClasses.*;
+import Records.*;
 
 public class Authenticate {
     private static Authenticate instance;
-    private Users users;
+    private final Users users;
     private static Scanner in;
 
     public static Authenticate getInstance() {
@@ -24,7 +25,7 @@ public class Authenticate {
     }
 
     public LoginResponse login(String username, String password) {
-        User u = users.idMap.get(username);
+        User u = users.find(username);
 
         if (u == null)
             return LoginResponse.NOT_EXISTS;

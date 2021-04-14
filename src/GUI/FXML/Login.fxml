@@ -42,12 +42,9 @@
                         <Label prefHeight="33.0" prefWidth="57.0" styleClass="text" stylesheets="@../assets/css/Login.css" text="Username" textFill="WHITE" />
                         <Label prefHeight="52.0" prefWidth="61.0" styleClass="text" stylesheets="@../assets/css/Login.css" text="Password" textFill="WHITE" GridPane.rowIndex="2" />
                         <BorderPane prefHeight="26.0" prefWidth="284.0" GridPane.rowIndex="5">
-                           <left>
+                           <center>
                               <JFXButton fx:id="loginButton" onAction="#loginButtonOnAction" ripplerFill="WHITE" styleClass="btn" text="Login" textFill="WHITE" BorderPane.alignment="CENTER" />
-                           </left>
-                           <right>
-                              <JFXButton fx:id="registerButton" onAction="#registerButtonOnAction" ripplerFill="WHITE" styleClass="btn" text="Register" BorderPane.alignment="CENTER" />
-                           </right>
+                           </center>
                         </BorderPane>
                         <JFXTextField fx:id="usernameText" onKeyPressed="#onTextChange" styleClass="textField" text="qfl1ck32" GridPane.rowIndex="1" />
                         <JFXTextField fx:id="passwordText" onKeyPressed="#onTextChange" styleClass="textField" text="123" GridPane.rowIndex="3" />

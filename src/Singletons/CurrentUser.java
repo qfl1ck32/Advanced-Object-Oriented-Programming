@@ -1,12 +1,13 @@
-package simpleClasses;
+package Singletons;
+
+import Records.User;
 
 public class CurrentUser {
     private static User user = null;
     
     public static User getUser() {
-        if (user == null) {
+        if (user == null)
             user = new User();
-        }
 
         return user;
     }

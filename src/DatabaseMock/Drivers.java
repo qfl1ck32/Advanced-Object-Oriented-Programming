@@ -1,14 +1,14 @@
-package compoundClasses;
+package DatabaseMock;
 
-import interfaces.*;
-import jsonparser.JSONParser;
-import simpleClasses.Driver;
+import JSONParser.JSONParser;
+import Records.Driver;
+import interfaces.IterableAndMappable;
 
-public class Drivers extends Entity <Driver> implements ArrayAndMap {
+public class Drivers extends WithArrayAndMap<Driver> implements IterableAndMappable {
     public void append(Object o) {
         Driver d = (Driver) o;
         super.arr.add(d);
-        super.idMap.put(d.getName(), d);
+        super.map.put(d.name(), d);
     }
 
     public void init(String filename) {
@@ -17,7 +17,7 @@ public class Drivers extends Entity <Driver> implements ArrayAndMap {
 
         while ((ID = parser.nextKey()) != null) {
             JSONParser inner = new JSONParser(parser.getJSON(ID));
-            
+
             Driver driver = new Driver(ID, inner.getString("name"), inner.getInteger("age"));
 
             this.append(driver);

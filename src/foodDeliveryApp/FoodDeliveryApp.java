@@ -1,6 +1,6 @@
-package foodDeliveryApp;
+package FoodDeliveryApp;
 
-import compoundClasses.Menu;
+import Singletons.Menu;
 
 public class FoodDeliveryApp {
 
@@ -10,19 +10,16 @@ public class FoodDeliveryApp {
 
     FoodDeliveryApp() {
         welcomeMessage = "Welcome to Food Delivery!";
+    }
 
-        menu = new Menu("src/assets/menu.json");
+    public void greet() {
+        System.out.println(welcomeMessage);
+        System.out.println("-".repeat(welcomeMessage.length()));
     }
 
     public static void main(String[] args) {
-        FoodDeliveryApp food = new FoodDeliveryApp();
+        FoodDeliveryApp myFoodDeliveryApp = new FoodDeliveryApp();
 
-         System.out.println(welcomeMessage);
-         System.out.println("-".repeat(welcomeMessage.length()));
-
-         while (true) {
-             food.menu.show();
-             System.out.println();
-         }
+        myFoodDeliveryApp.greet();
     }
 }

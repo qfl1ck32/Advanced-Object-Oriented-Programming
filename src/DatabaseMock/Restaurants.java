@@ -1,16 +1,16 @@
-package compoundClasses;
+package DatabaseMock;
 
-import interfaces.*;
-import simpleClasses.Restaurant;
-import jsonparser.JSONParser;
+import JSONParser.JSONParser;
+import Records.Restaurant;
+import interfaces.IterableAndMappable;
 
-public class Restaurants extends Entity <Restaurant> implements ArrayAndMap {
+public class Restaurants extends WithArrayAndMap<Restaurant> implements IterableAndMappable {
 
     public void append(Object o) {
         Restaurant r = (Restaurant) o;
 
         super.arr.add(r);
-        super.idMap.put(r.getID(), r);
+        super.map.put(r.ID(), r);
     }
 
     public void init(String filename) {
@@ -20,9 +20,9 @@ public class Restaurants extends Entity <Restaurant> implements ArrayAndMap {
         while ((ID = parser.nextKey()) != null) {
             JSONParser inner = new JSONParser(parser.getJSON(ID));
 
-            Restaurant restaurant = new Restaurant(ID, inner.getString("name"), 
-            inner.getString("location"), inner.getInteger("tableCount"));
-            
+            Restaurant restaurant = new Restaurant(ID, inner.getString("name"),
+                    inner.getString("location"), inner.getInteger("tableCount"));
+
             this.append(restaurant);
         }
     }

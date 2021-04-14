@@ -10,6 +10,11 @@
     -fx-text-fill: white;
 }
 
-.menu {
-    -fx-background-color: red;
+.context-menu {
+    -fx-background-color: rgba(255, 255, 255, 0.5);
+}
+
+.text {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
 }

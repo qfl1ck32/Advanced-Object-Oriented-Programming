@@ -1,16 +1,16 @@
-package compoundClasses;
+package DatabaseMock;
 
-import interfaces.*;
-import jsonparser.JSONParser;
-import simpleClasses.Delivery;
+import JSONParser.JSONParser;
+import Records.Delivery;
+import interfaces.IterableAndMappable;
 
-public class Deliveries extends Entity <Delivery> implements ArrayAndMap {
+public class Deliveries extends WithArrayAndMap<Delivery> implements IterableAndMappable {
 
     public void append(Object o) {
         Delivery d = (Delivery) o;
 
         super.arr.add(d);
-        super.idMap.put(d.getID(), d);
+        super.map.put(d.ID(), d);
     }
 
     private void init(String filename) {
@@ -21,14 +21,14 @@ public class Deliveries extends Entity <Delivery> implements ArrayAndMap {
             JSONParser inner = new JSONParser(parser.getJSON(ID));
 
             ProductsWithQuantity p = new ProductsWithQuantity(inner.getJSON());
-            
+
             Delivery delivery = new Delivery(ID, p);
 
             this.append(delivery);
         }
     }
 
-    public Deliveries(String filename) {
+    private Deliveries(String filename) {
         init(filename);
     }
 }
