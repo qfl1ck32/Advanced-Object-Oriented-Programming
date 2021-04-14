@@ -2,16 +2,32 @@
   "0X1": {
     "name": "Cheese",
     "products": {
-      "0X1": "Cheddar",
-      "0X2": "Mozzarella"
+
+      "0X1": {
+        "name": "Cheddar",
+        "price": 16
+      },
+      "0X2": {
+        "name": "Mozzarella",
+        "price": 12
+      },
+
     }
   },
 
   "0X2": {
     "name": "Meat",
     "products": {
-      "0X3": "Fish",
-      "0X4": "Pork"
+
+      "0X3": {
+        "name": "Fish",
+        "price": 18
+      },
+      "0X4": {
+        "name": "Pork",
+        "price": 32
+      },
+
     }
   }
 }
