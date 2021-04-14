@@ -1,8 +1,6 @@
 package GUI;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -17,11 +15,10 @@ public class gui extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        Parent mainStack = FXMLLoader.load(getClass().getResource("FXML/MainStack.fxml"));
-
-        ScreenManager.setMainScene(mainStack);
-
-        ScreenManager.setFirstScreen();
+        if (!ScreenManager.init()) {
+            System.out.println("Couldn't load the main screen.");
+            return;
+        }
 
         primaryStage.setTitle("myFoodDelivery");
         primaryStage.setScene(ScreenManager.getMainScene());

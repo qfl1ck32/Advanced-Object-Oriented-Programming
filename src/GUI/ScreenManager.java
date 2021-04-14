@@ -29,11 +29,39 @@ public class ScreenManager {
     private static Scene mainScene = null;
     private static final List <View> history = new ArrayList <> ();
 
+    public static Scene getMainScene() {
+        return mainScene;
+    }
+
+
+    public static boolean init() {
+        try {
+            Parent mainStack = FXMLLoader.load(ScreenManager.class.getResource("/GUI/FXML/MainStack.fxml"));
+            mainScene = new Scene(mainStack, 640, 480);
+
+            history.add(View.START);
+
+            StackPane root = (StackPane) mainScene.getRoot();
+            addScreen(View.START, "/GUI/FXML/Start.fxml");
+            root.getChildren().add(screens.get(View.START));
+
+        }
+
+        catch (IOException exception) {
+            return false;
+        }
+
+        return true;
+    }
+
+
     private static void addScreen(View view, String path) {
-        if (!hasScreen(view)) {
+        if (!screens.containsKey(view)) {
             try {
                 Parent newScreen = FXMLLoader.load(ScreenManager.class.getResource(path));
-                addScreen(view, newScreen);
+
+                if (!screens.containsKey(view))
+                    screens.put(view, newScreen);
             }
 
             catch (IOException exception) {
@@ -44,26 +72,6 @@ public class ScreenManager {
         }
     }
 
-    public static void setMainScene(Parent root) {
-        Scene scene = new Scene(root, 640, 480);
-
-        if (mainScene == null)
-            mainScene = scene;
-    }
-
-    public static Boolean hasScreen(View v) {
-        return screens.containsKey(v);
-    }
-
-    public static void setFirstScreen() {
-        history.add(View.START);
-
-        StackPane p = (StackPane) mainScene.getRoot();
-        addScreen(View.START, "/GUI/FXML/Start.fxml");
-
-        p.getChildren().add(screens.get(View.START));
-    }
-
     public static void setScreen(View v, SlideType slideType) {
         history.add(v);
 
@@ -71,21 +79,12 @@ public class ScreenManager {
             slideTo(v, 0.25, slideType, true);
             history.clear();
             history.add(v);
-            System.out.println(history);
         }
 
         else
             slideTo(v, 0.25, slideType, false);
     }
 
-    public static Scene getMainScene() {
-        return mainScene;
-    }
-
-    public static void addScreen(View v, Parent p) {
-        if (!screens.containsKey(v))
-            screens.put(v, p);
-    }
 
     public static void goBack(SlideType slideType) {
         int size = history.size();
@@ -165,6 +164,7 @@ public class ScreenManager {
         timeline.play();
     }
 
+
     public static void goToLogin() {
         addScreen(View.LOGIN, "/GUI/FXML/Login.fxml");
         setScreen(View.LOGIN, SlideType.HORIZONTAL);
@@ -195,6 +195,7 @@ public class ScreenManager {
         history.clear();
         history.add(View.START);
     }
+
 
     public static void showProducts() {
         StackPane parentContainer = (StackPane) mainScene.getRoot();
