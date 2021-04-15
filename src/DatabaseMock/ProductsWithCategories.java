@@ -27,7 +27,7 @@ public class ProductsWithCategories extends WithArrayAndMap<ProductWithCategory>
         super.map.put(p.name(), p);
     }
 
-    public void init(String filename) {
+    private void init(String filename) {
         JSONParser parser = new JSONParser(filename);
         String ID;
 
@@ -45,5 +45,4 @@ public class ProductsWithCategories extends WithArrayAndMap<ProductWithCategory>
     public ProductsWithCategories(String filename) {
         init(filename);
     }
-
 }
