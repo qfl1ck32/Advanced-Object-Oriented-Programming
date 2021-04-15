@@ -27,10 +27,6 @@ public class Users extends WithArrayAndMap<User> implements IterableAndMappable 
         }
     }
 
-    public User find(String username) {
-        return super.map.get(username);
-    }
-
     public Users(String filename) {
         init(filename);
     }
