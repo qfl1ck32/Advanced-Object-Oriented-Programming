@@ -14,4 +14,12 @@ public class WithArrayAndMap<T> {
         map = new HashMap<>();
         in = new Scanner(System.in);
     }
+
+    public ArrayList<T> getArr() {
+        return new ArrayList <T> (arr);
+    }
+
+    public HashMap<String, T> getMap() {
+        return new HashMap <String, T> (map);
+    }
 }
