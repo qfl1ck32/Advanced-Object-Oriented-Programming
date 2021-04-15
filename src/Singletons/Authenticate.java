@@ -25,7 +25,7 @@ public class Authenticate {
     }
 
     public LoginResponse login(String username, String password) {
-        User u = users.find(username);
+        User u = users.getMap().get(username);
 
         if (u == null)
             return LoginResponse.NOT_EXISTS;
