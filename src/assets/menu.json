@@ -4,6 +4,11 @@
         "hideOnAuth": true
     },
 
+    "Register": {
+        "requiresAuth": false,
+        "hideOnAuth": true
+    },
+
     "Logout": {
         "requiresAuth": true,
         "hideOnAuth": false
