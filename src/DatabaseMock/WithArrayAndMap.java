@@ -5,21 +5,21 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class WithArrayAndMap<T> {
-    protected ArrayList<T> arr;
-    protected HashMap<String, T> map;
-    protected Scanner in;
+    protected ArrayList<T> itemsArray;
+    protected HashMap<String, T> itemsMap;
+    protected Scanner scanner;
 
     public WithArrayAndMap() {
-        arr = new ArrayList<>();
-        map = new HashMap<>();
-        in = new Scanner(System.in);
+        itemsArray = new ArrayList<>();
+        itemsMap = new HashMap<>();
+        scanner = new Scanner(System.in);
     }
 
-    public ArrayList<T> getArr() {
-        return new ArrayList <T> (arr);
+    public ArrayList<T> getItemsArray() {
+        return new ArrayList <T> (itemsArray);
     }
 
-    public HashMap<String, T> getMap() {
-        return new HashMap <String, T> (map);
+    public HashMap<String, T> getItemsMap() {
+        return new HashMap <String, T> (itemsMap);
     }
 }

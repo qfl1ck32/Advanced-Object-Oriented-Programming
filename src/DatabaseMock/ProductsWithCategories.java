@@ -16,15 +16,15 @@ public class ProductsWithCategories extends WithArrayAndMap<ProductWithCategory>
     public void append(Object o) {
         ProductWithCategory p = (ProductWithCategory) o;
 
-        for (Product pr : p.products().arr) {
+        for (Product pr : p.products().itemsArray) {
             productByID.put(pr.ID(), pr);
             categoryByProductID.put(pr.ID(), p.name());
         }
 
         productsByIndex.put(++index, p);
 
-        super.arr.add(0, p);
-        super.map.put(p.name(), p);
+        super.itemsArray.add(0, p);
+        super.itemsMap.put(p.name(), p);
     }
 
     private void init(String filename) {

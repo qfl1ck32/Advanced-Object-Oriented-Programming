@@ -9,8 +9,8 @@ public class Deliveries extends WithArrayAndMap<Delivery> implements IterableAnd
     public void append(Object o) {
         Delivery d = (Delivery) o;
 
-        super.arr.add(d);
-        super.map.put(d.ID(), d);
+        super.itemsArray.add(d);
+        super.itemsMap.put(d.ID(), d);
     }
 
     private void init(String filename) {

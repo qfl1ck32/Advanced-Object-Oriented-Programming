@@ -7,8 +7,8 @@ import interfaces.IterableAndMappable;
 public class Drivers extends WithArrayAndMap<Driver> implements IterableAndMappable {
     public void append(Object o) {
         Driver d = (Driver) o;
-        super.arr.add(d);
-        super.map.put(d.name(), d);
+        super.itemsArray.add(d);
+        super.itemsMap.put(d.name(), d);
     }
 
     public void init(String filename) {

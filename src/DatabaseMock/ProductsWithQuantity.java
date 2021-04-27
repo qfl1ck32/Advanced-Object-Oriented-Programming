@@ -8,8 +8,8 @@ public class ProductsWithQuantity extends WithArrayAndMap<ProductWithQuantity> i
     public void append(Object o) {
         ProductWithQuantity p = (ProductWithQuantity) o;
 
-        super.arr.add(p);
-        super.map.put(p.ID(), p);
+        super.itemsArray.add(p);
+        super.itemsMap.put(p.ID(), p);
     }
 
     public ProductsWithQuantity(Object JSON) {

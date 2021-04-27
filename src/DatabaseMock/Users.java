@@ -9,8 +9,8 @@ public class Users extends WithArrayAndMap<User> implements IterableAndMappable 
     public void append(Object o) {
         User u = (User) o;
 
-        super.arr.add(u);
-        super.map.put(u.getUsername(), u);
+        super.itemsArray.add(u);
+        super.itemsMap.put(u.getUsername(), u);
     }
 
     public void init(String filename) {

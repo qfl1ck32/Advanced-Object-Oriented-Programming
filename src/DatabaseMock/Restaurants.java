@@ -9,8 +9,8 @@ public class Restaurants extends WithArrayAndMap<Restaurant> implements Iterable
     public void append(Object o) {
         Restaurant r = (Restaurant) o;
 
-        super.arr.add(r);
-        super.map.put(r.ID(), r);
+        super.itemsArray.add(r);
+        super.itemsMap.put(r.ID(), r);
     }
 
     public void init(String filename) {

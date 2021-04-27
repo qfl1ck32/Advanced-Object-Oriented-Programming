@@ -9,11 +9,9 @@ import Records.*;
 public class Authenticate {
     private static Authenticate instance;
     private final Users users;
-    private static Scanner in;
 
     public static Authenticate getInstance() {
         if (instance == null) {
-            in = new Scanner(System.in);
             instance = new Authenticate();
         }
 
@@ -25,7 +23,7 @@ public class Authenticate {
     }
 
     public LoginResponse login(String username, String password) {
-        User u = users.getMap().get(username);
+        User u = users.getItemsMap().get(username);
 
         if (u == null)
             return LoginResponse.NOT_EXISTS;
@@ -38,8 +36,6 @@ public class Authenticate {
         CurrentUser.setUser(u);
 
         return LoginResponse.SUCCESS;
-
-
     }
 
     public void logout() {

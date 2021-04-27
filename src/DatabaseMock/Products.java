@@ -9,8 +9,8 @@ public class Products extends WithArrayAndMap<Product> implements IterableAndMap
     public void append(Object o) {
         Product p = (Product) o;
 
-        super.arr.add(p);
-        super.map.put(p.ID(), p);
+        super.itemsArray.add(p);
+        super.itemsMap.put(p.ID(), p);
     }
 
     public Products(Object JSON) {
