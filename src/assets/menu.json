@@ -1,7 +1,12 @@
 {
-    "Back": {
+    "Login": {
         "requiresAuth": false,
         "hideOnAuth": true
+    },
+
+    "Logout": {
+        "requiresAuth": true,
+        "hideOnAuth": false
     },
 
     "Products": {
@@ -12,17 +17,12 @@
     "My account": {
         "requiresAuth": true,
         "hideOnAuth": false,
-        
+
         "submenu": {
             "Deliveries": {
                 "requiresAuth": true,
                 "hideOnAuth": false
             }
         }
-    },
-
-    "Logout": {
-        "requiresAuth": true,
-        "hideOnAuth": false
     }
 }
