@@ -1,10 +1,11 @@
 {
-    "0X1": {
-        "username": "qfl1ck32",
+    "4795c7315f144d5bab5071a05c79cb06": {
         "password": "123",
-        "address": "Street Square 23",
+        "address": "",
         "deliveryIDS": [],
         "isLoggedIn": false,
-        "cart": []
+        "email": "qfl1ck32@yahoo.com",
+        "cart": [],
+        "username": "qfl1ck32"
     }
 }
