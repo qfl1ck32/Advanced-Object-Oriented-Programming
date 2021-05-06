@@ -20,8 +20,9 @@ public class Users extends WithArrayAndMap<User> implements IterableAndMappable 
         while ((ID = parser.nextKey()) != null) {
             JSONParser inner = new JSONParser(parser.getJSON(ID));
 
-            User user = new User(inner.getString("username"), inner.getString("password"), inner.getString("address"),
-                    inner.getStringArray("deliveryIDS"), inner.getStringArray("cart"), inner.getBoolean("isLoggedIn"));
+            User user = new User(inner.getString("username"), inner.getString("password"),
+                    inner.getString("address"), inner.getStringArray("deliveryIDS"),
+                    inner.getStringArray("cart"), inner.getBoolean("isLoggedIn"));
 
             this.append(user);
         }
