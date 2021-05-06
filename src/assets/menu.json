@@ -3,22 +3,18 @@
         "requiresAuth": false,
         "hideOnAuth": true
     },
-
     "Register": {
         "requiresAuth": false,
         "hideOnAuth": true
     },
-
     "Logout": {
         "requiresAuth": true,
         "hideOnAuth": false
     },
-
     "Products": {
         "requiresAuth": false,
         "hideOnAuth": false
     },
-
     "My account": {
         "requiresAuth": true,
         "hideOnAuth": false,
@@ -27,7 +23,15 @@
             "Deliveries": {
                 "requiresAuth": true,
                 "hideOnAuth": false
+            },
+            "Back": {
+                "requiresAuth": false,
+                "hideOnAuth": false
             }
         }
+    },
+    "Exit": {
+        "requiresAuth": false,
+        "hideOnAuth": false
     }
 }
