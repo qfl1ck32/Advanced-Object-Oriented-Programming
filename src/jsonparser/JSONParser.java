@@ -1,11 +1,13 @@
 package JSONParser;
 
 import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Iterator;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.json.*;
@@ -22,13 +24,14 @@ public class JSONParser {
     }
 
     private boolean openFile(String filename) {
-        this.filename = filename;
-
         try {
+            this.filename = filename;
+
             Path path = Paths.get(filename);
             String JSON = Files.readAllLines(path, StandardCharsets.UTF_8).stream().collect(Collectors.joining(System.lineSeparator()));
             this.JSON = new JSONObject(JSON);
             this.keys = this.JSON.keys();
+
             return true;
         }
 
@@ -46,42 +49,65 @@ public class JSONParser {
         this.JSON = (JSONObject) o;
         this.keys = this.JSON.keys();
     }
-    
+
     public JSONParser(String filename) {
         this.filename = filename;
-
         this.openFile(this.filename);
     }
 
-    public boolean saveFile() {
-        if (filename == null)
-            return false;
+    public JSONParser() {
+        this.JSON = new JSONObject();
+        this.keys = this.JSON.keys();
+    }
 
+
+
+    public boolean put(String key, JSONParser value)  {
         try {
-            FileWriter file = new FileWriter(filename);
-
-            file.write(JSON.toString(4));
-
-            file.close();
+            this.JSON.put(key, value.JSON);
             return true;
         }
 
-        catch (Exception e) {
+        catch (JSONException e) {
+            return false;
+        }
+    }
+
+    public boolean put(String key, String value) {
+        try {
+            this.JSON.put(key, value);
+            return true;
+        }
+
+        catch (JSONException e) {
+            return false;
+        }
+    }
+
+    public boolean put(String key, List <?> value) {
+        try {
+            this.JSON.put(key, value);
+            return true;
+        }
+
+        catch (JSONException e) {
+            return false;
+        }
+    }
+
+    public boolean put(String key, boolean value) {
+        try {
+            this.JSON.put(key, value);
+            return true;
+        }
+
+        catch (JSONException e) {
             return false;
         }
     }
 
 
-    public Object getObject(String key) {
-        try {
-            return JSON.get(key);
-        }
 
-        catch (Exception e) {
-            return null;
-        }
-    }
-  
     public String getString(String key) {
         try {
             return JSON.getString(key);
@@ -143,9 +169,27 @@ public class JSONParser {
         return this.JSON;
     }
 
-    public boolean setObject(String key, Object value) {
+    public JSONParser getJSONParser(String key) {
         try {
-            JSON.put(key, value);
+            return new JSONParser(JSON.get(key));
+        }
+
+        catch (Exception ignored) {
+            return null;
+        }
+    }
+
+    public boolean saveModifications() {
+        if (filename == null)
+            return false;
+
+        try {
+            FileWriter file = new FileWriter(filename);
+
+            file.write(JSON.toString(4));
+
+            file.close();
+
             return true;
         }
 
@@ -154,9 +198,6 @@ public class JSONParser {
         }
     }
 
-    public Object createJSON() {
-        return (Object) (new JSONObject());
-    }
 
     public String nextKey() {
         try {
