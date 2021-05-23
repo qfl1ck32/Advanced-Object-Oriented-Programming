@@ -1,13 +1,7 @@
 package FoodDeliveryApp;
 
-import DTO.Services.UserService;
-import DTO.User;
-import Database.Database;
-
 import Singletons.Menu;
 
-import java.sql.ResultSet;
-import java.util.Collections;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class FoodDeliveryApp {
