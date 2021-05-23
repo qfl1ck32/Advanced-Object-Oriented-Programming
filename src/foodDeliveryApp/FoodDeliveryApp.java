@@ -1,22 +1,25 @@
 package FoodDeliveryApp;
 
+import DTO.Services.UserService;
+import DTO.User;
+import Database.Database;
+
 import Singletons.Menu;
+
+import java.sql.ResultSet;
+import java.util.Collections;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class FoodDeliveryApp {
 
     private final String welcomeMessage;
-    private Menu menu = null;
+    private final AtomicBoolean showMenu;
+    private final Menu menu;
 
     FoodDeliveryApp() {
         welcomeMessage = "Welcome to Food Delivery!";
-
-        try {
-            menu = Menu.getInstance();
-        }
-
-        catch (Exception err) {
-            System.out.println("Couldn't load Menu data.");
-        }
+        showMenu = new AtomicBoolean(true);
+        menu = Menu.getInstance(showMenu);
     }
 
     public void greet() {
@@ -29,9 +32,11 @@ public class FoodDeliveryApp {
 
         myFoodDeliveryApp.greet();
 
-        while(myFoodDeliveryApp.menu.show()) {
-            System.out.print("\033[H\033[2J");
-            System.out.flush();
+        while(myFoodDeliveryApp.showMenu.get()) {
+            System.out.println();
+            myFoodDeliveryApp.menu.show();
         }
+
+        System.out.println("Goodbye!");
     }
 }
