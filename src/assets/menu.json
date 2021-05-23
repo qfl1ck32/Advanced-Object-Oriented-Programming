@@ -3,35 +3,62 @@
         "requiresAuth": false,
         "hideOnAuth": true
     },
+
     "Register": {
         "requiresAuth": false,
         "hideOnAuth": true
     },
+
     "Logout": {
         "requiresAuth": true,
         "hideOnAuth": false
     },
+
     "Products": {
         "requiresAuth": false,
         "hideOnAuth": false
     },
+
+    "Place order": {
+        "requiresAuth": true,
+        "hideOnAuth": false
+    },
+
+    "Cart": {
+        "requiresAuth": true,
+        "hideOnAuth": false,
+
+        "submenu": {
+            "Show cart": {},
+            "Modify cart": {},
+            "Add to cart": {}
+        }
+    },
+
+    "Transactions": {
+        "requiresAuth": true,
+        "hideOnAuth": false,
+
+        "submenu": {
+            "Show history": {},
+            "Cancel transaction": {}
+        }
+    },
+
     "My account": {
         "requiresAuth": true,
         "hideOnAuth": false,
 
         "submenu": {
-            "Deliveries": {
-                "requiresAuth": true,
-                "hideOnAuth": false
+
+            "Personal data": {
+                "submenu": {
+                    "Show personal data": {},
+                    "Modify personal data": {}
+                }
             },
-            "Back": {
-                "requiresAuth": false,
-                "hideOnAuth": false
-            }
+
+            "Deliveries": {}
         }
-    },
-    "Exit": {
-        "requiresAuth": false,
-        "hideOnAuth": false
     }
 }
