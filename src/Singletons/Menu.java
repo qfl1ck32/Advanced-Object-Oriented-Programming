@@ -10,9 +10,11 @@ import WithArrayAndMap.WithArrayAndMap;
 import enumerations.LoginResponse;
 import enumerations.SignupResponse;
 import interfaces.IterableAndMappable;
-import javafx.util.Pair;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
@@ -186,7 +188,7 @@ public class Menu extends WithArrayAndMap<MenuOption> implements IterableAndMapp
 
         switch (choice.name().toLowerCase()) {
             case "login" -> handleLogin();
-            case "logout" -> CurrentUser.logout();
+            case "logout" -> UserService.getInstance().logout();
             case "register" -> handleRegister();
 
             case "show personal data" -> showPersonalData();

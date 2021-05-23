@@ -3,14 +3,17 @@ package Singletons;
 import DTO.User;
 
 public class CurrentUser {
-    private static User user = null;
+    private static final User nullUser = new User(null, null, null, null,
+            null, null, null, null, null);
+
+    private static User user = nullUser;
     
     public static User getUser() {
         return user;
     }
 
     public static boolean isLoggedIn() {
-        return user != null;
+        return user != nullUser;
     }
 
     public static void login(User u) {
@@ -18,6 +21,6 @@ public class CurrentUser {
     }
 
     public static void logout() {
-        user = null;
+        user = nullUser;
     }
 }
