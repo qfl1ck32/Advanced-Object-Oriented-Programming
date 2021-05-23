@@ -3,13 +3,15 @@ package DTO.Services;
 import DTO.CategoryWithProducts;
 import DTO.Product;
 import Database.Database;
-import javafx.util.Pair;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import Audit.Audit;
+import Singletons.CurrentUser;
 
 public class ProductsService implements DTOService <Product> {
 
@@ -93,6 +95,8 @@ public class ProductsService implements DTOService <Product> {
             throw new RuntimeException("Couldn't get product categories IDs: " + exception);
         }
 
+        Audit.insertLog(CurrentUser.getUser().ID(), "Get all categories with products");
+
         return answer;
     }
 
@@ -103,6 +107,8 @@ public class ProductsService implements DTOService <Product> {
         for (CategoryWithProducts category : categories) {
             answer.addAll(category.products());
         }
+
+        Audit.insertLog(CurrentUser.getUser().ID(), "Get all products");
 
         return answer;
     }

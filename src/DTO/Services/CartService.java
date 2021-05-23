@@ -6,8 +6,12 @@ import Database.Database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import Audit.Audit;
 
 public class CartService implements DTOService <Cart> {
 
@@ -88,6 +92,8 @@ public class CartService implements DTOService <Cart> {
                     "AND product_ID = UNHEX(?);";
 
             database.sendQuery(insertQuery, Arrays.asList(product.quantity(), ID, product.ID()));
+
+            Audit.insertLog(ID, "Add +" + product.quantity() + " to " + product.name());
         }
 
         else {
@@ -95,6 +101,8 @@ public class CartService implements DTOService <Cart> {
                     "VALUES (UNHEX(?), UNHEX(?), ?);";
 
             database.sendQuery(insertQuery, Arrays.asList(ID, product.ID(), product.quantity()));
+
+            Audit.insertLog(ID, "Insert " + product.quantity() + " x " + product.name());
         }
     }
 
@@ -106,6 +114,8 @@ public class CartService implements DTOService <Cart> {
                 "AND product_ID = UNHEX(?);";
 
         database.sendQuery(query, Arrays.asList(ID, product.ID()));
+
+        Audit.insertLog(ID, "Remove " + product.name());
     }
 
     public void updateProductQuantity(String ID, CartProduct product, int newQuantity) {
@@ -121,5 +131,7 @@ public class CartService implements DTOService <Cart> {
                 "AND product_ID = UNHEX(?);";
 
         database.sendQuery(query, Arrays.asList(newQuantity, ID, product.ID()));
+
+        Audit.insertLog(ID, "Update quantity for " + product.name() + " to " + newQuantity);
     }
 }

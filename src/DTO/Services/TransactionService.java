@@ -2,13 +2,16 @@ package DTO.Services;
 
 import DTO.Transaction;
 import DTO.TransactionItem;
-import Database.Database;
+import Database.*;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
+
+import java.sql.Timestamp;
 import java.util.*;
+
+import Audit.Audit;
+import Singletons.CurrentUser;
 
 public class TransactionService implements DTOService <Transaction> {
 
@@ -89,14 +92,15 @@ public class TransactionService implements DTOService <Transaction> {
             throw new RuntimeException("Couldn't get all transactions: " + exception);
         }
 
+        Audit.insertLog(CurrentUser.getUser().ID(), "Get all the transactions");
+
         return answer;
     }
 
     public void placeOrder(String ID) {
         String transactionID = UUID.randomUUID().toString();
-        Date date = new Date();
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String timestamp = format.format(date);
+
+        Timestamp timestamp = DatabaseUtil.getTimestamp();
 
         Database database = Database.getInstance();
 
@@ -114,6 +118,8 @@ public class TransactionService implements DTOService <Transaction> {
 
         database.sendQuery("DELETE FROM cart " +
                 "WHERE ID = UNHEX(?);", Collections.singletonList(ID));
+
+        Audit.insertLog(CurrentUser.getUser().ID(), "Place order with transactionID " + transactionID);
     }
 
     public boolean cancelTransaction(String ID) {
@@ -124,6 +130,18 @@ public class TransactionService implements DTOService <Transaction> {
                 "WHERE transaction_ID = UNHEX(?) " +
                 "AND status = 'waiting';", Collections.singletonList(ID));
 
-        return database.getLastModifiedRowsCount() > 0;
+        boolean canceled = database.getLastModifiedRowsCount() > 0;
+
+        String userID = CurrentUser.getUser().ID();
+
+        if(canceled) {
+            Audit.insertLog(userID, "Cancel transaction with ID " + ID);
+        }
+
+        else {
+            Audit.insertLog(userID, "Try to cancel transaction with ID " + ID);
+        }
+
+        return canceled;
     }
 }

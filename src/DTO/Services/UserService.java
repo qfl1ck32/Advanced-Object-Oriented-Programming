@@ -13,6 +13,8 @@ import java.util.Collections;
 import java.util.UUID;
 import java.util.stream.Stream;
 
+import Audit.Audit;
+
 public class UserService implements DTOService <User> {
 
     private static UserService instance;
@@ -108,6 +110,8 @@ public class UserService implements DTOService <User> {
         insert(new User(ID, o.username(), o.email(), o.password(),
                 o.phoneNumber(), o.country(), o.city(), o.street(), o.postalCode()));
 
+        Audit.insertLog(ID, "Register");
+
         return SignupResponse.SUCCESS;
     }
 
@@ -136,7 +140,14 @@ public class UserService implements DTOService <User> {
 
         CurrentUser.login(UserService.getInstance().selectByID(ID));
 
+        Audit.insertLog(ID, "Log in");
+
         return LoginResponse.SUCCESS;
+    }
+
+    public void logout() {
+        Audit.insertLog(CurrentUser.getUser().ID(), "Logout");
+        CurrentUser.logout();
     }
 
     public void updatePersonalData(User u) {
@@ -154,6 +165,8 @@ public class UserService implements DTOService <User> {
                 u.phoneNumber(), u.country(), u.city(), u.street(), u.postalCode());
 
         CurrentUser.login(newUser);
+
+        Audit.insertLog(u.ID(), "Update personal data");
     }
 
     ///
