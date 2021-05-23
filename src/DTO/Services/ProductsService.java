@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.List;
 
 import Audit.Audit;
-import Singletons.CurrentUser;
+import CurrentUser.CurrentUser;
 
 public class ProductsService implements DTOService <Product> {
 

@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 import java.util.*;
 
 import Audit.Audit;
-import Singletons.CurrentUser;
+import CurrentUser.CurrentUser;
 
 public class TransactionService implements DTOService <Transaction> {
 

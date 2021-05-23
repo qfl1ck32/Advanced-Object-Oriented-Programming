@@ -1,5 +1,6 @@
-package Singletons;
+package Menu;
 
+import CurrentUser.CurrentUser;
 import DTO.*;
 import DTO.Services.CartService;
 import DTO.Services.ProductsService;

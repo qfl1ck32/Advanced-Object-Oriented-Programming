@@ -2,7 +2,7 @@ package DTO.Services;
 
 import DTO.User;
 import Database.Database;
-import Singletons.CurrentUser;
+import CurrentUser.CurrentUser;
 import enumerations.LoginResponse;
 import enumerations.SignupResponse;
 

@@ -1,6 +1,6 @@
 package FoodDeliveryApp;
 
-import Singletons.Menu;
+import Menu.Menu;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 

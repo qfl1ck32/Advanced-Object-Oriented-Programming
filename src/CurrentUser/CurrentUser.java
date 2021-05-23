@@ -1,4 +1,4 @@
-package Singletons;
+package CurrentUser;
 
 import DTO.User;
 
