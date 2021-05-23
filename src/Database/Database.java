@@ -2,6 +2,7 @@ package Database;
 
 import java.sql.*;
 import java.util.List;
+import java.util.Objects;
 
 public class Database {
     private static final String DB_URL = "";
@@ -46,11 +47,17 @@ public class Database {
             for (int i = 1; i <= values.size(); ++i) {
                 Object item = values.get(i - 1);
 
+                if (Objects.isNull(item)) {
+                    statement.setNull(i, Types.BINARY);
+                    continue;
+                }
+
                 switch (item.getClass().getSimpleName()) {
                     case "String" -> statement.setString(i, (String) item);
                     case "Double" -> statement.setDouble(i, (Double) item);
                     case "Integer" -> statement.setInt(i, (int) item);
                     case "Boolean" -> statement.setBoolean(i, (boolean) item);
+                    case "Timestamp" -> statement.setTimestamp(i, (Timestamp) item);
                 }
             }
 
