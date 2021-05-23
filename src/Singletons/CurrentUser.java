@@ -1,21 +1,23 @@
 package Singletons;
 
-import Records.User;
+import DTO.User;
 
 public class CurrentUser {
     private static User user = null;
     
     public static User getUser() {
-        if (user == null)
-            user = new User();
-
         return user;
     }
 
-    public static void setUser(User u) {
-        if (user == null)
-            user = new User();
+    public static boolean isLoggedIn() {
+        return user != null;
+    }
 
+    public static void login(User u) {
         user = u;
+    }
+
+    public static void logout() {
+        user = null;
     }
 }
